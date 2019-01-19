@@ -11,7 +11,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -24,8 +23,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public MapboxMap mapboxMap;
     MapView mapView;
 
-    @BindView(R.id.xyzTV)
-    TextView xyzTV;
     @BindView(R.id.calibrateBTN)
     Button calibrateBTN;
     public static float calib_X,calib_Y,calib_Z;
@@ -131,8 +128,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             String result = "ACT X -> "+actX+"\nACT Y -> "+actY+"\nACT Z -> "+actZ;
             result = result+"\nCalib X -> "+calibX+"\nCalib Y -> "+calibY+"\nCalib Z -> "+calibZ;
-
-            xyzTV.setText(result);
         }
     }
 

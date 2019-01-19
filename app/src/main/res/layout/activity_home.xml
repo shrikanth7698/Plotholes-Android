@@ -2,45 +2,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mapbox.mapboxsdk.maps.MapView
-        android:id="@+id/mapView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="60sp"
-        android:layout_marginTop="50sp"
-        android:background="#2D52C5"
-        android:drawablePadding="20sp"
-        android:paddingStart="15sp"
-        android:paddingEnd="15sp"
-        android:drawableStart="@drawable/dot"
-        android:layout_marginStart="20sp"
-        android:elevation="20sp"
-        android:hint="Where To?"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:layout_marginEnd="20sp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-        android:background="@android:color/white"
-        android:layout_alignParentBottom="true">
-        <TextView
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/xyzTV"
-            android:layout_margin="16dp"/>
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="50sp"
+            android:layout_marginEnd="20sp"
+            android:background="#2D52C5"
+            android:drawableStart="@drawable/dot"
+            android:drawablePadding="20sp"
+            android:elevation="20sp"
+            android:hint="Where To?"
+            android:paddingStart="15sp"
+            android:paddingEnd="15sp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
             android:id="@+id/calibrateBTN"
-            android:text="Calibrate"/>
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="20sp"
+            android:background="#2D52C5"
+            android:elevation="20sp"
+            android:text="Calibrate"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
 
 </FrameLayout>

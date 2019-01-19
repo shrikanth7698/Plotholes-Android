@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93a41212-09c0-4739-84ea-bdf859ab001b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../app/src/main/assets/mean.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../app/src/main/assets/mean_calib.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/HomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/services/SensorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/services/SensorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/services/TensorFlowClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/services/TensorFlowClassifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -45,29 +40,29 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="8" />
-          <entry key="java" value="7" />
-          <entry key="xml" value="11" />
+          <entry key="java" value="9" />
+          <entry key="xml" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="8" />
-          <entry key="JAVA" value="7" />
-          <entry key="XML" value="11" />
+          <entry key="JAVA" value="9" />
+          <entry key="XML" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="1" />
           <entry key="java" value="204" />
-          <entry key="xml" value="230" />
+          <entry key="xml" value="276" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="1" />
           <entry key="JAVA" value="204" />
-          <entry key="XML" value="230" />
+          <entry key="XML" value="276" />
         </counts>
       </usages-collector>
     </session>
@@ -94,21 +89,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+            <state relative-caret-position="46">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#onCreate#0;class#BaseActivity#0" />
-                <element signature="e#1928#2557#0" expanded="true" />
-                <element signature="e#2556#2557#0" expanded="true" />
-                <element signature="e#2601#2807#0" expanded="true" />
-                <element signature="e#2806#2807#0" expanded="true" />
                 <element signature="method#onStart#0;class#BaseActivity#0" />
                 <element signature="method#onStop#0;class#BaseActivity#0" />
                 <element signature="method#onDestroy#0;class#BaseActivity#0" />
                 <element signature="method#onPause#0;class#BaseActivity#0" />
                 <element signature="method#onResume#0;class#BaseActivity#0" />
                 <element signature="method#onLowMemory#0;class#BaseActivity#0" />
+                <element signature="method#onSaveInstanceState#0;class#BaseActivity#0" />
+                <element signature="class#SensorBroadcastReceiver#0;class#BaseActivity#0" />
+                <element signature="method#round#0;class#BaseActivity#0" />
               </folding>
             </state>
           </provider>
@@ -118,17 +111,8 @@
         <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="897">
-              <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="68" lean-forward="true" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+            <state relative-caret-position="445">
+              <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -167,8 +151,8 @@
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/HomeActivity.java" />
         <option value="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/../app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/../app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/../app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" />
       </list>
@@ -194,39 +178,13 @@
             <path>
               <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
-              <item name="plotholes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -389,6 +347,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1595136" />
@@ -490,18 +449,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml">
-      <provider editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/../app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="39" column="35" lean-forward="true" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+        <state relative-caret-position="253">
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/res/values/styles.xml">
+    <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml">
+      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="68" lean-forward="true" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+        <state relative-caret-position="445">
+          <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -522,21 +481,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+        <state relative-caret-position="46">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#onCreate#0;class#BaseActivity#0" />
-            <element signature="e#1928#2557#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-            <element signature="e#2601#2807#0" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
             <element signature="method#onStart#0;class#BaseActivity#0" />
             <element signature="method#onStop#0;class#BaseActivity#0" />
             <element signature="method#onDestroy#0;class#BaseActivity#0" />
             <element signature="method#onPause#0;class#BaseActivity#0" />
             <element signature="method#onResume#0;class#BaseActivity#0" />
             <element signature="method#onLowMemory#0;class#BaseActivity#0" />
+            <element signature="method#onSaveInstanceState#0;class#BaseActivity#0" />
+            <element signature="class#SensorBroadcastReceiver#0;class#BaseActivity#0" />
+            <element signature="method#round#0;class#BaseActivity#0" />
           </folding>
         </state>
       </provider>
