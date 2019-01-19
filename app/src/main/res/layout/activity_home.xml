@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -7,4 +7,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_marginTop="50sp"
+        android:background="#2D52C5"
+        android:drawablePadding="20sp"
+        android:paddingStart="15sp"
+        android:paddingEnd="15sp"
+        android:drawableStart="@drawable/dot"
+        android:layout_marginStart="20sp"
+        android:elevation="20sp"
+        android:hint="Where To?"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_marginEnd="20sp" />
+
+</FrameLayout>
