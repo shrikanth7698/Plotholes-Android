@@ -18,6 +18,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.shrikanthravi.plotholes.HomeActivity;
+
 public class SensorService extends Service implements SensorEventListener {
 
     public SensorService() {
@@ -56,16 +58,34 @@ public class SensorService extends Service implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         final int type = event.sensor.getType();
         classifyData();
-        x.add(event.values[0]);
-        y.add(event.values[1]);
-        z.add(event.values[2]);
+        x.add(event.values[0]-HomeActivity.calib_X);
+        y.add(event.values[1]-HomeActivity.calib_Y);
+        z.add(event.values[2]-HomeActivity.calib_Z);
+
+        float x = event.values[0];
+        float y = event.values[1];
+        float z = event.values[2];
+
+        //String output = "X -> "+String.valueOf(x)+"\nY -> "+String.valueOf(y)+"\nZ -> "+String.valueOf(z);
+
+        //Toast.makeText(getApplicationContext(), output,Toast.LENGTH_SHORT).show();
 
 
 
 
-        //sendBroadcast(x,y,z);
+        sendBroadcast(x,y,z);
         //System.out.println("Accelerometer data\nx -> "+x+"\ny -> "+y+"\nz -> "+z);
 
+    }
+
+    public void sendBroadcast(float x,float y,float z){
+        Intent intent = new Intent("SensorBroadcastReceiver");
+        Bundle bundle = new Bundle();
+        bundle.putFloat("Acc_X",x);
+        bundle.putFloat("Acc_Y",y);
+        bundle.putFloat("Acc_Z",z);
+        intent.putExtras(bundle);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
     private float[] results;
@@ -80,6 +100,9 @@ public class SensorService extends Service implements SensorEventListener {
             data.addAll(x);
             data.addAll(y);
             data.addAll(z);
+            //data.addAll(meanX(x));
+            //data.addAll(meanY(y));
+            //data.addAll(meanZ(z));
             results = classifier.predictProbabilities(toFloatArray(data));
 
             String goodProb =  Float.toString(round(results[0], 3));
@@ -151,6 +174,31 @@ public class SensorService extends Service implements SensorEventListener {
         }
         System.out.println("shrikanth slope testing --> after"+slope);
         return slope;
+    }
+
+    List<Float> meanX(List<Float> temp){
+        List<Float> mean = new ArrayList<>();
+        for(int i=0;i<temp.size();i++){
+            mean.add((float) ((temp.get(i)-1.10155749)/(3.49168468)));
+        }
+        System.out.println("shrikanth mean testing --> after"+mean);
+        return mean;
+    }
+
+    List<Float> meanY(List<Float> temp){
+        List<Float> mean = new ArrayList<>();
+        for(int i=0;i<temp.size();i++){
+            mean.add((float) ((temp.get(i)-1.44701922)/(2.45126748)));
+        }
+        return mean;
+    }
+
+    List<Float> meanZ(List<Float> temp){
+        List<Float> mean = new ArrayList<>();
+        for(int i=0;i<temp.size();i++){
+            mean.add((float) ((temp.get(i)-7.38596535)/(5.11600208)));
+        }
+        return mean;
     }
 
 

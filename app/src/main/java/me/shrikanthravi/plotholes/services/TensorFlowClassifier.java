@@ -11,7 +11,7 @@ public class TensorFlowClassifier {
     }
 
     private TensorFlowInferenceInterface inferenceInterface;
-    private static final String MODEL_FILE = "file:///android_asset/activity.pb";
+    private static final String MODEL_FILE = "file:///android_asset/mean_calib.pb";
 //    private static final String MODEL_FILE = "file:///android_asset/frozen_har.pb";
     private static final String INPUT_NODE = "input";
     private static final String[] OUTPUT_NODES = {"y_"};
