@@ -11,17 +11,45 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import me.shrikanthravi.plotholes.api.models.oauth.OAuthRes;
+import me.shrikanthravi.plotholes.api.services.OAuthClient;
+import me.shrikanthravi.plotholes.api.services.OAuthInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class Splash extends AppCompatActivity {
     String[] PERMISSIONS_REQUIRED = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE};
+    private OAuthInterface oAuthInterface;
+    private TinyDB db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
-        requestPermissions();
+
+        db = new TinyDB(getApplicationContext());
+        oAuthInterface = OAuthClient.getClient().create(OAuthInterface.class);
+        oAuthInterface.getAccessToken(Config.grant_type, Config.client_id, Config.client_secret).enqueue(new Callback<OAuthRes>() {
+            @Override
+            public void onResponse(Call<OAuthRes> call, Response<OAuthRes> response) {
+                if (response.isSuccessful()) {
+                    db.putString("access_token", response.body().getTokenType() + " " + response.body().getAccessToken());
+                    requestPermissions();
+                }
+                else {
+                    Toast.makeText(Splash.this, response.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<OAuthRes> call, Throwable t) {
+                Toast.makeText(Splash.this, t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
