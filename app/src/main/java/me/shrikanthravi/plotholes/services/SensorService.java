@@ -72,7 +72,11 @@ public class SensorService extends Service implements SensorEventListener {
 
     private void classifyData(){
         if (x.size() == N_SAMPLES && y.size() == N_SAMPLES && z.size() == N_SAMPLES) {
+
             List<Float> data = new ArrayList<>();
+            //data.addAll(slope(x));
+            //data.addAll(slope(y));
+            //data.addAll(slope(z));
             data.addAll(x);
             data.addAll(y);
             data.addAll(z);
@@ -136,6 +140,17 @@ public class SensorService extends Service implements SensorEventListener {
         BigDecimal bd = new BigDecimal(Float.toString(d));
         bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
+    }
+
+    List<Float> slope(List<Float> temp){
+        System.out.println("shrikanth slope testing --> before"+temp);
+        List<Float> slope = new ArrayList<>();
+        for(int i=1;i<temp.size();i++){
+            slope.add(temp.get(i)-temp.get(i-1));
+
+        }
+        System.out.println("shrikanth slope testing --> after"+slope);
+        return slope;
     }
 
 
