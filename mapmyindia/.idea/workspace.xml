@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93a41212-09c0-4739-84ea-bdf859ab001b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/SetupMapMyIndia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/TinyDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/TinyDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,14 +43,14 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="10" />
-          <entry key="java" value="26" />
+          <entry key="java" value="29" />
           <entry key="xml" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="10" />
-          <entry key="JAVA" value="26" />
+          <entry key="JAVA" value="29" />
           <entry key="XML" value="12" />
         </counts>
       </usages-collector>
@@ -54,14 +58,14 @@
         <counts>
           <entry key="dummy" value="5" />
           <entry key="gradle" value="1" />
-          <entry key="java" value="858" />
+          <entry key="java" value="935" />
           <entry key="xml" value="276" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="858" />
+          <entry key="JAVA" value="935" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="276" />
         </counts>
@@ -70,17 +74,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-              <folding>
-                <element signature="method#onCreate#0;class#Splash#0" />
-                <element signature="method#onRequestPermissionsResult#0;class#Splash#0" />
-                <element signature="method#requestPermissions#0;class#Splash#0" />
-                <element signature="method#redirect#0;class#Splash#0" />
-              </folding>
+            <state relative-caret-position="184">
+              <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -134,6 +141,8 @@
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/TinyDB.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/OAuthInterface.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" />
+        <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java" />
+        <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java" />
       </list>
     </option>
   </component>
@@ -152,7 +161,42 @@
           <expand>
             <path>
               <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
+              <item name="plotholes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
+              <item name="plotholes" type="462c0819:PsiDirectoryNode" />
+              <item name="extras" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -315,10 +359,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2081545" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2081545" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -356,13 +399,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../build.gradle">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/SetupMapMyIndia.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mapbox.mapboxsdk/mapbox-android-core/0.2.1/ca3f44e5ca9af684a3e8d8d6f9486da82961b832/mapbox-android-core-0.2.1-sources.jar!/com/mapbox/android/core/location/LocationEngineListener.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -469,53 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="104" selection-start-line="5" selection-start-column="104" selection-end-line="5" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/TinyDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="method#TinyDB#0;class#TinyDB#0" />
-            <element signature="method#getListInt#0;class#TinyDB#0" />
-            <element signature="e#3794#3802#0" expanded="true" />
-            <element signature="e#3877#3886#0" expanded="true" />
-            <element signature="method#getLong#0;class#TinyDB#0" />
-            <element signature="method#getDouble#0;class#TinyDB#0" />
-            <element signature="method#getListDouble#0;class#TinyDB#0" />
-            <element signature="e#4675#4683#0" expanded="true" />
-            <element signature="e#4757#4765#0" expanded="true" />
-            <element signature="method#getListLong#0;class#TinyDB#0" />
-            <element signature="e#5081#5089#0" expanded="true" />
-            <element signature="e#5161#5167#0" expanded="true" />
-            <element signature="method#getListString#0;class#TinyDB#0" />
-            <element signature="method#getListBoolean#0;class#TinyDB#0" />
-            <element signature="e#5826#5835#0" expanded="true" />
-            <element signature="method#putInt#0;class#TinyDB#0" />
-            <element signature="method#putListInt#0;class#TinyDB#0" />
-            <element signature="method#putLong#0;class#TinyDB#0" />
-            <element signature="method#putListLong#0;class#TinyDB#0" />
-            <element signature="method#putFloat#0;class#TinyDB#0" />
-            <element signature="method#putDouble#0;class#TinyDB#0" />
-            <element signature="method#putListDouble#0;class#TinyDB#0" />
-            <element signature="method#putString#0;class#TinyDB#0" />
-            <element signature="method#putListString#0;class#TinyDB#0" />
-            <element signature="method#putBoolean#0;class#TinyDB#0" />
-            <element signature="method#putListBoolean#0;class#TinyDB#0" />
-            <element signature="e#8206#8214#0" expanded="true" />
-            <element signature="method#registerOnSharedPreferenceChangeListener#0;class#TinyDB#0" />
-            <element signature="method#unregisterOnSharedPreferenceChangeListener#0;class#TinyDB#0" />
-            <element signature="method#checkForNullKey#0;class#TinyDB#0" />
-            <element signature="method#checkForNullValue#0;class#TinyDB#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="403">
@@ -568,6 +557,52 @@
             <element signature="method#requestPermissions#0;class#Splash#0" />
             <element signature="method#redirect#0;class#Splash#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/TinyDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="method#TinyDB#0;class#TinyDB#0" />
+            <element signature="method#getListInt#0;class#TinyDB#0" />
+            <element signature="method#getLong#0;class#TinyDB#0" />
+            <element signature="method#getDouble#0;class#TinyDB#0" />
+            <element signature="method#getListDouble#0;class#TinyDB#0" />
+            <element signature="method#getListLong#0;class#TinyDB#0" />
+            <element signature="method#getListString#0;class#TinyDB#0" />
+            <element signature="method#getListBoolean#0;class#TinyDB#0" />
+            <element signature="method#putInt#0;class#TinyDB#0" />
+            <element signature="method#putListInt#0;class#TinyDB#0" />
+            <element signature="method#putLong#0;class#TinyDB#0" />
+            <element signature="method#putListLong#0;class#TinyDB#0" />
+            <element signature="method#putFloat#0;class#TinyDB#0" />
+            <element signature="method#putDouble#0;class#TinyDB#0" />
+            <element signature="method#putListDouble#0;class#TinyDB#0" />
+            <element signature="method#putString#0;class#TinyDB#0" />
+            <element signature="method#putListString#0;class#TinyDB#0" />
+            <element signature="method#putBoolean#0;class#TinyDB#0" />
+            <element signature="method#putListBoolean#0;class#TinyDB#0" />
+            <element signature="method#registerOnSharedPreferenceChangeListener#0;class#TinyDB#0" />
+            <element signature="method#unregisterOnSharedPreferenceChangeListener#0;class#TinyDB#0" />
+            <element signature="method#checkForNullKey#0;class#TinyDB#0" />
+            <element signature="method#checkForNullValue#0;class#TinyDB#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>

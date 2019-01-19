@@ -16,6 +16,8 @@ import android.widget.Toast;
 import me.shrikanthravi.plotholes.api.models.oauth.OAuthRes;
 import me.shrikanthravi.plotholes.api.services.OAuthClient;
 import me.shrikanthravi.plotholes.api.services.OAuthInterface;
+import me.shrikanthravi.plotholes.extras.Config;
+import me.shrikanthravi.plotholes.extras.TinyDB;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
