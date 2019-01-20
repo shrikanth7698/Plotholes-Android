@@ -12,10 +12,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -28,8 +28,6 @@ import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -71,13 +69,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
     private ApiInterface api;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager manager;
-    ArrayList<LatLng> listOfLatlang = new ArrayList<>();
     private ArrayList<String> placename = new ArrayList<>();
     private ArrayList<String> placeaddress = new ArrayList<>();
     private ArrayList<Double> latitude = new ArrayList<>();
     private ArrayList<Double> longitude = new ArrayList<>();
 
     public abstract void onAppMapReady(MapboxMap mapboxMap);
+
+    public abstract void onAutofillRowSelected(double latitude, double longitude);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +130,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                         public void onResponse(Call<AutofillRes> call, Response<AutofillRes> response) {
                             if (response.isSuccessful()) {
                                 if (response.body() != null) {
-                                    for (int i=0; i<response.body().suggestedLocationsRes().size(); i++) {
+                                    for (int i = 0; i < response.body().suggestedLocationsRes().size(); i++) {
                                         placename.add(response.body().suggestedLocationsRes().get(i).getPlaceName());
                                         placeaddress.add(response.body().suggestedLocationsRes().get(i).getPlaceAddress());
                                         latitude.add(response.body().suggestedLocationsRes().get(i).getLatitude());
@@ -141,8 +140,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                                         adapter = new AutofillAdapter(BaseActivity.this, placename, placeaddress, BaseActivity.this);
                                         autofill_recycler.setLayoutManager(new LinearLayoutManager(BaseActivity.this, LinearLayoutManager.VERTICAL, true));
                                         autofill_recycler.setAdapter(adapter);
-                                    }
-                                    else {
+                                    } else {
                                         adapter.notifyDataSetChanged();
                                     }
                                 }
@@ -156,8 +154,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                             Toast.makeText(BaseActivity.this, t.toString(), Toast.LENGTH_LONG).show();
                         }
                     });
-                }
-                else {
+                } else {
                     scrollView.setVisibility(View.GONE);
                 }
             }
@@ -252,9 +249,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
 
     @Override
     public void onTouched(int position) {
-        listOfLatlang.add(new LatLng(latitude.get(position), longitude.get(position)));
-        mapboxMap.addPolyline(new PolylineOptions().addAll(listOfLatlang).color(Color.parseColor("#3bb2d0")).width(4));
-        LatLngBounds latLngBounds = new LatLngBounds.Builder().includes(listOfLatlang).build();
-        mapboxMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 70));
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        scrollView.setVisibility(View.GONE);
+        onAutofillRowSelected(latitude.get(position), longitude.get(position));
     }
 }

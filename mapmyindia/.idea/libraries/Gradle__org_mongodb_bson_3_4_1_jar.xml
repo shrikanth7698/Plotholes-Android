@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.mongodb:bson:3.4.1@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mongodb/bson/3.4.1/33d26d7e77f39b0031584a5f2ff1173120043022/bson-3.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mongodb/bson/3.4.1/4862988e5ee9ea3e5d65020c842e50efc406092/bson-3.4.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

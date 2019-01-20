@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
@@ -12,8 +13,10 @@ import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineListener;
 import com.mapbox.android.core.location.LocationEnginePriority;
 import com.mapbox.android.core.location.LocationEngineProvider;
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerOptions;
 import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerPlugin;
@@ -37,6 +40,7 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
     MapboxMap mapboxMap;
     TinyDB tinyDB;
     List<PotholeLocation> potholeLocations = new ArrayList<>();
+    ArrayList<LatLng> listOfLatlang = new ArrayList<>();
 
     @Override
     public void onAppMapReady(final MapboxMap mapboxMap) {
@@ -60,8 +64,12 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
         startService(new Intent(getApplicationContext(), SensorService.class));
     }
 
-    public void check() {
-        Log.wtf("DOES IT WORK?", "FUCK YEAH");
+    @Override
+    public void onAutofillRowSelected(double latitude, double longitude) {
+        listOfLatlang.add(new LatLng(latitude, longitude));
+        mapboxMap.addPolyline(new PolylineOptions().addAll(listOfLatlang).color(Color.parseColor("#000000")).width(4));
+        LatLngBounds latLngBounds = new LatLngBounds.Builder().includes(listOfLatlang).build();
+        mapboxMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 70));
     }
 
     @Override
@@ -74,8 +82,11 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
 
     @Override
     public void onLocationChanged(Location location) {
-        tinyDB.putString("lat",String.valueOf(location.getLatitude()));
-        tinyDB.putString("lng",String.valueOf(location.getLongitude()));
+        if (listOfLatlang.size() == 0) {
+            listOfLatlang.add(new LatLng(location.getLatitude(), location.getLongitude()));
+        }
+        tinyDB.putString("lat", String.valueOf(location.getLatitude()));
+        tinyDB.putString("lng", String.valueOf(location.getLongitude()));
         mapboxMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15));
         locationEngine.removeLocationEngineListener(this);
     }
@@ -100,7 +111,7 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
             public void onResponse(Call<List<PotholeLocation>> call, Response<List<PotholeLocation>> response) {
                 potholeLocations.clear();
                 potholeLocations.addAll(response.body());
-                System.out.println("potholes list size -> "+potholeLocations.size());
+                System.out.println("potholes list size -> " + potholeLocations.size());
             }
 
             @Override

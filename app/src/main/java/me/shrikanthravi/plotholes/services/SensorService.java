@@ -130,7 +130,7 @@ public class SensorService extends Service implements SensorEventListener {
                 Toast.makeText(getApplicationContext(),"Pothole -> "+badProb,Toast.LENGTH_SHORT).show();
                 //TODO upload pothole data to db
                 //uploadPotholetoFBDB(lat,lng);
-                uploadPotholeDataMongo(lat,lng);
+                //uploadPotholeDataMongo(lat,lng);
 
             }
 
