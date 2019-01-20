@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
@@ -24,6 +26,9 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.Marker;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -49,11 +54,10 @@ import retrofit2.Response;
 
 public abstract class BaseActivity extends AppCompatActivity implements AutofillAdapter.MyCallback {
 
-    public MapboxMap mapboxMap;
+    public MapboxMap mapboxMap1;
 
     @BindView(R.id.where)
     EditText whereto;
-
 
     @BindView(R.id.calibrateBTN)
     Button calibrateBTN;
@@ -63,6 +67,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
 
     @BindView(R.id.mapView)
     MapView mapView;
+
+    Bitmap potholeIcon;
+
+
 
     public static float calib_X, calib_Y, calib_Z;
     float x, y, z;
@@ -88,6 +96,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
 
+
+
         /*ViewGroup layout = (ViewGroup) findViewById(R.id.topLL);
         LayoutTransition layoutTransition = layout.getLayoutTransition();
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING);*/
@@ -105,6 +115,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(final MapboxMap mapboxMap) {
+                mapboxMap1 = mapboxMap;
                 mapboxMap.setMinZoomPreference(2.5);
                 mapboxMap.setMaxZoomPreference(18.5);
                 mapboxMap.getUiSettings().setAttributionEnabled(false);
@@ -112,9 +123,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                 mapboxMap.getUiSettings().setTiltGesturesEnabled(false);
                 mapboxMap.setPadding(20, 20, 20, 20);
                 mapboxMap.getUiSettings().setLogoMargins(0, 0, 0, 0);
+               
                 onAppMapReady(mapboxMap);
             }
         });
+
+
 
         whereto.addTextChangedListener(new TextWatcher() {
             @Override
@@ -274,5 +288,24 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
         }
         autofill_recycler.setVisibility(View.GONE);
         onAutofillRowSelected(latitude.get(position), longitude.get(position));
+    }
+
+    public void plotPotholes(MapboxMap mapboxMap){
+
+        System.out.println("shrikanth pothole plot testing -> "+HomeActivity.potholeLocations.size());
+
+        for(int i=0;i<HomeActivity.potholeLocations.size();i++){
+
+            LatLng latLng = new LatLng();
+            latLng.setLatitude(Double.valueOf(HomeActivity.potholeLocations.get(i).getLatitude()));
+            latLng.setLongitude(Double.valueOf(HomeActivity.potholeLocations.get(i).getLongitude()));
+            MarkerOptions  markerOptions = new MarkerOptions().position(latLng);
+            //Marker marker1 = map.addMarker(markerOptions);
+            markerOptions.setTitle("");
+            markerOptions.setSnippet("");
+            mapboxMap.addMarker(markerOptions);
+
+        }
+
     }
 }

@@ -13,6 +13,9 @@ import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineListener;
 import com.mapbox.android.core.location.LocationEnginePriority;
 import com.mapbox.android.core.location.LocationEngineProvider;
+import com.mapbox.mapboxsdk.annotations.Icon;
+import com.mapbox.mapboxsdk.annotations.Marker;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -111,6 +114,17 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
             public void onResponse(Call<List<PotholeLocation>> call, Response<List<PotholeLocation>> response) {
                 potholeLocations.clear();
                 potholeLocations.addAll(response.body());
+                for(int i=0;i<potholeLocations.size();i++) {
+                    LatLng latLng = new LatLng();
+                    latLng.setLatitude(Double.valueOf(potholeLocations.get(i).getLatitude()));
+                    latLng.setLongitude(Double.valueOf(potholeLocations.get(i).getLongitude()));
+                    MarkerOptions markerOptions = new MarkerOptions().position(latLng);
+
+                    //Marker marker1 = map.addMarker(markerOptions);
+                    markerOptions.setTitle("");
+                    markerOptions.setSnippet("");
+                    mapboxMap.addMarker(markerOptions);
+                }
                 System.out.println("potholes list size -> " + potholeLocations.size());
             }
 
