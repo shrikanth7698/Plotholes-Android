@@ -29,11 +29,13 @@
             android:textColorHint="@color/white" />
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="200sp"
-            android:layout_marginStart="20sp"
             android:layout_below="@+id/where"
-            android:layout_marginEnd="20sp">
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:visibility="gone">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/autofill"

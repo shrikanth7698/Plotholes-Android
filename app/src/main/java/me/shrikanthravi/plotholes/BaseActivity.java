@@ -4,9 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,8 +18,13 @@ import android.view.WindowManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -27,6 +34,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.shrikanthravi.plotholes.adapters.AutofillAdapter;
 import me.shrikanthravi.plotholes.api.models.general.AutofillRes;
 import me.shrikanthravi.plotholes.api.services.ApiClient;
 import me.shrikanthravi.plotholes.api.services.ApiInterface;
@@ -35,12 +43,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements AutofillAdapter.MyCallback {
 
     public MapboxMap mapboxMap;
 
     @BindView(R.id.where)
     EditText whereto;
+
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
 
     @BindView(R.id.calibrateBTN)
     Button calibrateBTN;
@@ -58,6 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private ApiInterface api;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager manager;
+    ArrayList<LatLng> listOfLatlang = new ArrayList<>();
     private ArrayList<String> placename = new ArrayList<>();
     private ArrayList<String> placeaddress = new ArrayList<>();
     private ArrayList<Double> latitude = new ArrayList<>();
@@ -91,7 +103,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 mapboxMap.setPadding(20, 20, 20, 20);
                 mapboxMap.getUiSettings().setLogoMargins(0, 0, 0, 0);
                 onAppMapReady(mapboxMap);
-
             }
         });
 
@@ -107,17 +118,29 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (whereto.getText().toString().length() > 1) {
-
+                    placename.clear();
+                    placeaddress.clear();
+                    latitude.clear();
+                    longitude.clear();
+                    scrollView.setVisibility(View.VISIBLE);
                     api.autfillPlaces(db.getString("access_token"), whereto.getText().toString()).enqueue(new Callback<AutofillRes>() {
                         @Override
                         public void onResponse(Call<AutofillRes> call, Response<AutofillRes> response) {
                             if (response.isSuccessful()) {
-                                if (response != null) {
+                                if (response.body() != null) {
                                     for (int i=0; i<response.body().suggestedLocationsRes().size(); i++) {
                                         placename.add(response.body().suggestedLocationsRes().get(i).getPlaceName());
                                         placeaddress.add(response.body().suggestedLocationsRes().get(i).getPlaceAddress());
                                         latitude.add(response.body().suggestedLocationsRes().get(i).getLatitude());
                                         longitude.add(response.body().suggestedLocationsRes().get(i).getLongitude());
+                                    }
+                                    if (adapter == null) {
+                                        adapter = new AutofillAdapter(BaseActivity.this, placename, placeaddress, BaseActivity.this);
+                                        autofill_recycler.setLayoutManager(new LinearLayoutManager(BaseActivity.this, LinearLayoutManager.VERTICAL, true));
+                                        autofill_recycler.setAdapter(adapter);
+                                    }
+                                    else {
+                                        adapter.notifyDataSetChanged();
                                     }
                                 }
                             } else {
@@ -130,6 +153,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                             Toast.makeText(BaseActivity.this, t.toString(), Toast.LENGTH_LONG).show();
                         }
                     });
+                }
+                else {
+                    scrollView.setVisibility(View.GONE);
                 }
             }
         });
@@ -212,5 +238,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         BigDecimal bd = new BigDecimal(Float.toString(d));
         bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
+    }
+
+    @Override
+    public void onTouched(int position) {
+        listOfLatlang.add(new LatLng(latitude.get(position), longitude.get(position)));
+        mapboxMap.addPolyline(new PolylineOptions().addAll(listOfLatlang).color(Color.parseColor("#3bb2d0")).width(4));
+        LatLngBounds latLngBounds = new LatLngBounds.Builder().includes(listOfLatlang).build();
+        mapboxMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 70));
     }
 }
