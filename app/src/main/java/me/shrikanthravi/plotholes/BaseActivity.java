@@ -107,13 +107,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (whereto.getText().toString().length() > 1) {
+
                     api.autfillPlaces(db.getString("access_token"), whereto.getText().toString()).enqueue(new Callback<AutofillRes>() {
                         @Override
                         public void onResponse(Call<AutofillRes> call, Response<AutofillRes> response) {
                             if (response.isSuccessful()) {
                                 if (response != null) {
                                     for (int i=0; i<response.body().suggestedLocationsRes().size(); i++) {
-                                        
+                                        placename.add(response.body().suggestedLocationsRes().get(i).getPlaceName());
+                                        placeaddress.add(response.body().suggestedLocationsRes().get(i).getPlaceAddress());
+                                        latitude.add(response.body().suggestedLocationsRes().get(i).getLatitude());
+                                        placeaddress.add(response.body().suggestedLocationsRes().get(i).getPlaceAddress());
                                     }
                                 }
                             } else {
