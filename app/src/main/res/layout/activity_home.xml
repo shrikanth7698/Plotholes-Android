@@ -12,6 +12,7 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/where"
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="20sp"
@@ -26,6 +27,22 @@
             android:paddingEnd="15sp"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:layout_marginStart="20sp"
+            android:layout_below="@+id/where"
+            android:layout_marginEnd="20sp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/autofill"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5sp"
+                android:scrollbars="vertical" />
+
+        </ScrollView>
 
         <Button
             android:id="@+id/calibrateBTN"

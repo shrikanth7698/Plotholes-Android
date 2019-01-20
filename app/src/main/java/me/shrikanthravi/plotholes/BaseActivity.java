@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public MapboxMap mapboxMap;
 
-    @BindView(R.id.whereto)
+    @BindView(R.id.where)
     EditText whereto;
 
     @BindView(R.id.calibrateBTN)
@@ -60,8 +60,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager manager;
     private ArrayList<String> placename = new ArrayList<>();
     private ArrayList<String> placeaddress = new ArrayList<>();
-    private ArrayList<String> latitude = new ArrayList<>();
-    private ArrayList<String> longitude = new ArrayList<>();
+    private ArrayList<Double> latitude = new ArrayList<>();
+    private ArrayList<Double> longitude = new ArrayList<>();
 
     public abstract void onAppMapReady(MapboxMap mapboxMap);
 
@@ -117,7 +117,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                                         placename.add(response.body().suggestedLocationsRes().get(i).getPlaceName());
                                         placeaddress.add(response.body().suggestedLocationsRes().get(i).getPlaceAddress());
                                         latitude.add(response.body().suggestedLocationsRes().get(i).getLatitude());
-                                        placeaddress.add(response.body().suggestedLocationsRes().get(i).getPlaceAddress());
+                                        longitude.add(response.body().suggestedLocationsRes().get(i).getLongitude());
                                     }
                                 }
                             } else {
