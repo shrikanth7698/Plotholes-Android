@@ -94,12 +94,12 @@ public class SensorService extends Service implements SensorEventListener {
         if (x.size() == N_SAMPLES && y.size() == N_SAMPLES && z.size() == N_SAMPLES) {
 
             List<Float> data = new ArrayList<>();
-            //data.addAll(slope(x));
-            //data.addAll(slope(y));
-            //data.addAll(slope(z));
-            data.addAll(x);
-            data.addAll(y);
-            data.addAll(z);
+            data.addAll(slope(x));
+            data.addAll(slope(y));
+            data.addAll(slope(z));
+            //data.addAll(x);
+            //data.addAll(y);
+            //data.addAll(z);
             //data.addAll(meanX(x));
             //data.addAll(meanY(y));
             //data.addAll(meanZ(z));
@@ -108,7 +108,9 @@ public class SensorService extends Service implements SensorEventListener {
             String goodProb =  Float.toString(round(results[0], 3));
             String badProb =  Float.toString(round(results[1], 3));
             String resultText = "Good -> "+goodProb+"\nBad -> "+badProb;
-            Toast.makeText(getApplicationContext(),resultText,Toast.LENGTH_SHORT).show();
+            if(round(results[1],3)>0.7){
+                Toast.makeText(getApplicationContext(),"Pothole -> "+badProb,Toast.LENGTH_SHORT).show();
+            }
 
             x.clear();
             y.clear();
