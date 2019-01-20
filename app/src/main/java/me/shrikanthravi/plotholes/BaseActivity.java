@@ -123,7 +123,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                 mapboxMap.getUiSettings().setTiltGesturesEnabled(false);
                 mapboxMap.setPadding(20, 20, 20, 20);
                 mapboxMap.getUiSettings().setLogoMargins(0, 0, 0, 0);
-               
+
                 onAppMapReady(mapboxMap);
             }
         });
@@ -290,22 +290,5 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
         onAutofillRowSelected(latitude.get(position), longitude.get(position));
     }
 
-    public void plotPotholes(MapboxMap mapboxMap){
 
-        System.out.println("shrikanth pothole plot testing -> "+HomeActivity.potholeLocations.size());
-
-        for(int i=0;i<HomeActivity.potholeLocations.size();i++){
-
-            LatLng latLng = new LatLng();
-            latLng.setLatitude(Double.valueOf(HomeActivity.potholeLocations.get(i).getLatitude()));
-            latLng.setLongitude(Double.valueOf(HomeActivity.potholeLocations.get(i).getLongitude()));
-            MarkerOptions  markerOptions = new MarkerOptions().position(latLng);
-            //Marker marker1 = map.addMarker(markerOptions);
-            markerOptions.setTitle("");
-            markerOptions.setSnippet("");
-            mapboxMap.addMarker(markerOptions);
-
-        }
-
-    }
 }
