@@ -6,7 +6,9 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.location.Location;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.mapbox.android.core.location.LocationEngine;
@@ -26,6 +28,7 @@ import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 import me.shrikanthravi.plotholes.api.services.AzureDB;
 import me.shrikanthravi.plotholes.api.services.ApiInterface;
@@ -44,6 +47,7 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
     TinyDB tinyDB;
     List<PotholeLocation> potholeLocations = new ArrayList<>();
     ArrayList<LatLng> listOfLatlang = new ArrayList<>();
+    List<Marker> markerList = new ArrayList<>();
 
     @Override
     public void onAppMapReady(final MapboxMap mapboxMap) {
@@ -90,6 +94,12 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
         }
         tinyDB.putString("lat", String.valueOf(location.getLatitude()));
         tinyDB.putString("lng", String.valueOf(location.getLongitude()));
+        Intent intent = new Intent("LatLngBroadcastReceiver");
+        Bundle bundle = new Bundle();
+        bundle.putString("lat",String.valueOf(location.getLatitude()));
+        bundle.putString("lng",String.valueOf(location.getLongitude()));
+        intent.putExtras(bundle);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         mapboxMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15));
         locationEngine.removeLocationEngineListener(this);
     }
@@ -109,11 +119,30 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
         }
         tinyDB = new TinyDB(getApplicationContext());
         api = AzureDB.getClient().create(ApiInterface.class);
+
+        final android.os.Handler handler = new android.os.Handler();
+        HomeActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                getPotholes();
+                handler.postDelayed(this,5000);
+            }
+        });
+
+
+    }
+
+    public void getPotholes(){
         api.getPotholes().enqueue(new Callback<List<PotholeLocation>>() {
             @Override
             public void onResponse(Call<List<PotholeLocation>> call, Response<List<PotholeLocation>> response) {
                 potholeLocations.clear();
                 potholeLocations.addAll(response.body());
+                for(int i=0;i<markerList.size();i++){
+                    mapboxMap.removeMarker(markerList.get(i));
+                }
+                markerList.clear();
+
                 for(int i=0;i<potholeLocations.size();i++) {
                     LatLng latLng = new LatLng();
                     latLng.setLatitude(Double.valueOf(potholeLocations.get(i).getLatitude()));
@@ -123,7 +152,8 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
                     //Marker marker1 = map.addMarker(markerOptions);
                     markerOptions.setTitle("");
                     markerOptions.setSnippet("");
-                    mapboxMap.addMarker(markerOptions);
+                    markerList.add(mapboxMap.addMarker(markerOptions));
+
                 }
                 System.out.println("potholes list size -> " + potholeLocations.size());
             }
@@ -133,7 +163,6 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
 
             }
         });
-
     }
 
     @Override

@@ -47,7 +47,7 @@ public class SensorService extends Service implements SensorEventListener {
     private TensorFlowClassifier classifier;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
-    double lat,lng;
+    String lat,lng;
     LatLngBroadcastReceiver latLngBroadcastReceiver;
 
 
@@ -75,7 +75,7 @@ public class SensorService extends Service implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         final int type = event.sensor.getType();
-        classifyData(tinyDB.getString("lat"),tinyDB.getString("lng"));
+        classifyData(lat,lng);
         x.add(event.values[0]-HomeActivity.calib_X);
         y.add(event.values[1]-HomeActivity.calib_Y);
         z.add(event.values[2]-HomeActivity.calib_Z);
@@ -130,7 +130,7 @@ public class SensorService extends Service implements SensorEventListener {
                 Toast.makeText(getApplicationContext(),"Pothole -> "+badProb,Toast.LENGTH_SHORT).show();
                 //TODO upload pothole data to db
                 //uploadPotholetoFBDB(lat,lng);
-                //uploadPotholeDataMongo(lat,lng);
+                uploadPotholeDataMongo(lat,lng);
 
             }
 
@@ -167,8 +167,10 @@ public class SensorService extends Service implements SensorEventListener {
         public void onReceive(Context context, Intent intent) {
 
             Bundle b = intent.getExtras();
-            lat = b.getFloat("lat");
-            lng = b.getFloat("lng");
+            lat = b.getString("lat");
+            lng = b.getString("lng");
+
+            System.out.println("Shrikanth location testing -> "+lat+","+lng);
 
         }
     }
