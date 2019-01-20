@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-sdk-geojson:3.3.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-core:0.2.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation project (':mapmyindia')
     implementation('com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.5.2') {

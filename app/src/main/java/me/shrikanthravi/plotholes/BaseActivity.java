@@ -7,41 +7,78 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.shrikanthravi.plotholes.api.models.general.AutofillRes;
+import me.shrikanthravi.plotholes.api.services.ApiClient;
+import me.shrikanthravi.plotholes.api.services.ApiInterface;
+import me.shrikanthravi.plotholes.extras.TinyDB;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     public MapboxMap mapboxMap;
-    MapView mapView;
+
+    @BindView(R.id.whereto)
+    EditText whereto;
 
     @BindView(R.id.calibrateBTN)
     Button calibrateBTN;
-    public static float calib_X,calib_Y,calib_Z;
-    float x,y,z;
+
+    @BindView(R.id.autofill)
+    RecyclerView autofill_recycler;
+
+    @BindView(R.id.mapView)
+    MapView mapView;
+
+    public static float calib_X, calib_Y, calib_Z;
+    float x, y, z;
     SensorBroadcastReceiver sensorBroadcastReceiver;
+    private TinyDB db;
+    private ApiInterface api;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager manager;
+    private ArrayList<String> placename = new ArrayList<>();
+    private ArrayList<String> placeaddress = new ArrayList<>();
+    private ArrayList<String> latitude = new ArrayList<>();
+    private ArrayList<String> longitude = new ArrayList<>();
+
     public abstract void onAppMapReady(MapboxMap mapboxMap);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
+
+        db = new TinyDB(getApplicationContext());
+        api = ApiClient.getClient().create(ApiInterface.class);
         ButterKnife.bind(this);
         sensorBroadcastReceiver = new SensorBroadcastReceiver();
         final IntentFilter intentFilter = new IntentFilter("SensorBroadcastReceiver");
         LocalBroadcastManager.getInstance(this).registerReceiver(sensorBroadcastReceiver, intentFilter);
 
-        mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -54,6 +91,42 @@ public abstract class BaseActivity extends AppCompatActivity {
                 mapboxMap.setPadding(20, 20, 20, 20);
                 mapboxMap.getUiSettings().setLogoMargins(0, 0, 0, 0);
                 onAppMapReady(mapboxMap);
+
+            }
+        });
+
+        whereto.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (whereto.getText().toString().length() > 1) {
+                    api.autfillPlaces(db.getString("access_token"), whereto.getText().toString()).enqueue(new Callback<AutofillRes>() {
+                        @Override
+                        public void onResponse(Call<AutofillRes> call, Response<AutofillRes> response) {
+                            if (response.isSuccessful()) {
+                                if (response != null) {
+                                    for (int i=0; i<response.body().suggestedLocationsRes().size(); i++) {
+                                        
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(BaseActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<AutofillRes> call, Throwable t) {
+                            Toast.makeText(BaseActivity.this, t.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
             }
         });
 
@@ -122,12 +195,12 @@ public abstract class BaseActivity extends AppCompatActivity {
             String actY = Float.toString(round(y, 3));
             String actZ = Float.toString(round(z, 3));
 
-            String calibX = Float.toString(round((x-calib_X), 3));
-            String calibY = Float.toString(round((y-calib_Y), 3));
-            String calibZ = Float.toString(round((z-calib_Z), 3));
+            String calibX = Float.toString(round((x - calib_X), 3));
+            String calibY = Float.toString(round((y - calib_Y), 3));
+            String calibZ = Float.toString(round((z - calib_Z), 3));
 
-            String result = "ACT X -> "+actX+"\nACT Y -> "+actY+"\nACT Z -> "+actZ;
-            result = result+"\nCalib X -> "+calibX+"\nCalib Y -> "+calibY+"\nCalib Z -> "+calibZ;
+            String result = "ACT X -> " + actX + "\nACT Y -> " + actY + "\nACT Z -> " + actZ;
+            result = result + "\nCalib X -> " + calibX + "\nCalib Y -> " + calibY + "\nCalib Z -> " + calibZ;
         }
     }
 

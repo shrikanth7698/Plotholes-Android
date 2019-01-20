@@ -10,11 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93a41212-09c0-4739-84ea-bdf859ab001b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/SetupMapMyIndia.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/TinyDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/TinyDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,32 +42,32 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gradle" value="10" />
-          <entry key="java" value="29" />
-          <entry key="xml" value="12" />
+          <entry key="gradle" value="12" />
+          <entry key="java" value="38" />
+          <entry key="xml" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Groovy" value="10" />
-          <entry key="JAVA" value="29" />
-          <entry key="XML" value="12" />
+          <entry key="Groovy" value="12" />
+          <entry key="JAVA" value="38" />
+          <entry key="XML" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="5" />
-          <entry key="gradle" value="1" />
-          <entry key="java" value="935" />
-          <entry key="xml" value="276" />
+          <entry key="gradle" value="4" />
+          <entry key="java" value="1420" />
+          <entry key="xml" value="739" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Groovy" value="1" />
-          <entry key="JAVA" value="935" />
+          <entry key="Groovy" value="4" />
+          <entry key="JAVA" value="1420" />
           <entry key="PLAIN_TEXT" value="5" />
-          <entry key="XML" value="276" />
+          <entry key="XML" value="739" />
         </counts>
       </usages-collector>
     </session>
@@ -75,19 +75,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java">
+        <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+            <state relative-caret-position="322">
+              <caret line="14" column="36" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java">
+        <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="268">
+              <caret line="113" column="135" selection-start-line="113" selection-start-column="135" selection-end-line="113" selection-end-column="135" />
+              <folding>
+                <element signature="e#5097#5303#0" expanded="true" />
+                <element signature="e#5302#5303#0" expanded="true" />
+                <element signature="method#onStart#0;class#BaseActivity#0" />
+                <element signature="method#onStop#0;class#BaseActivity#0" />
+                <element signature="method#onDestroy#0;class#BaseActivity#0" />
+                <element signature="method#onPause#0;class#BaseActivity#0" />
+                <element signature="method#onResume#0;class#BaseActivity#0" />
+                <element signature="method#onLowMemory#0;class#BaseActivity#0" />
+                <element signature="method#onSaveInstanceState#0;class#BaseActivity#0" />
+                <element signature="class#SensorBroadcastReceiver#0;class#BaseActivity#0" />
+                <element signature="method#round#0;class#BaseActivity#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,6 +118,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>mapboxMap</find>
+      <find>rec</find>
+      <find>findViw</find>
+      <find>mapView</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,14 +138,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/../settings.gradle" />
-        <option value="$PROJECT_DIR$/../app/build.gradle" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/SetupMapMyIndia.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/HomeActivity.java" />
         <option value="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/../app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/../app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" />
-        <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/ApiClient.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/OAuthClient.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/oauth/OAuthRequest.java" />
@@ -143,6 +157,11 @@
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/Splash.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java" />
         <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java" />
+        <option value="$PROJECT_DIR$/../app/build.gradle" />
+        <option value="$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/../app/src/main/res/layout/autofill_row.xml" />
+        <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/adapters/AutofillAdapter.java" />
+        <option value="$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java" />
       </list>
     </option>
   </component>
@@ -196,7 +215,27 @@
               <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
               <item name="plotholes" type="462c0819:PsiDirectoryNode" />
-              <item name="extras" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
+              <item name="plotholes" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Plotholes-Android" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="me" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="shrikanthravi" type="462c0819:PsiDirectoryNode" />
+              <item name="plotholes" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -361,7 +400,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2081545" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2081545" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -433,33 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="method#onCreate#0;class#BaseActivity#0" />
-            <element signature="method#onStart#0;class#BaseActivity#0" />
-            <element signature="method#onStop#0;class#BaseActivity#0" />
-            <element signature="method#onDestroy#0;class#BaseActivity#0" />
-            <element signature="method#onPause#0;class#BaseActivity#0" />
-            <element signature="method#onResume#0;class#BaseActivity#0" />
-            <element signature="method#onLowMemory#0;class#BaseActivity#0" />
-            <element signature="method#onSaveInstanceState#0;class#BaseActivity#0" />
-            <element signature="class#SensorBroadcastReceiver#0;class#BaseActivity#0" />
-            <element signature="method#round#0;class#BaseActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/oauth/OAuthReq.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -467,83 +479,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/ApiClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/oauth/OAuthRes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" selection-start-line="6" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/general/SuggestedLocationsRes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/general/AutofillRes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/ApiInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="38" column="42" selection-start-line="38" selection-start-column="42" selection-end-line="38" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/OAuthClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="9" column="79" selection-start-line="9" selection-start-column="79" selection-end-line="9" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/OAuthInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="13" column="156" selection-start-line="13" selection-start-column="156" selection-end-line="13" selection-end-column="156" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-          <folding>
-            <element signature="method#onConnected#0;class#HomeActivity#0" />
-            <element signature="method#onLocationChanged#0;class#HomeActivity#0" />
-            <element signature="method#onStart#0;class#HomeActivity#0" />
-            <element signature="method#onStop#0;class#HomeActivity#0" />
-            <element signature="method#onDestroy#0;class#HomeActivity#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -592,6 +531,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/Config.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -599,10 +545,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/extras/SetupMapMyIndia.java">
+    <entry file="file://$PROJECT_DIR$/../app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="240">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" selection-start-column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/HomeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="method#onAppMapReady#0;class#HomeActivity#0" />
+            <element signature="method#onConnected#0;class#HomeActivity#0" />
+            <element signature="method#onLocationChanged#0;class#HomeActivity#0" />
+            <element signature="method#onStart#0;class#HomeActivity#0" />
+            <element signature="method#onStop#0;class#HomeActivity#0" />
+            <element signature="method#onDestroy#0;class#HomeActivity#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/general/AutofillRes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/models/general/SuggestedLocationsRes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/autofill_row.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/adapters/AutofillAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/res/layout/activity_home.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/OAuthInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="13" column="156" selection-start-line="13" selection-start-column="156" selection-end-line="13" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/ApiInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/ApiClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="9" column="79" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/api/services/OAuthClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="9" column="81" lean-forward="true" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../app/src/main/java/me/shrikanthravi/plotholes/BaseActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="113" column="135" selection-start-line="113" selection-start-column="135" selection-end-line="113" selection-end-column="135" />
+          <folding>
+            <element signature="e#5097#5303#0" expanded="true" />
+            <element signature="e#5302#5303#0" expanded="true" />
+            <element signature="method#onStart#0;class#BaseActivity#0" />
+            <element signature="method#onStop#0;class#BaseActivity#0" />
+            <element signature="method#onDestroy#0;class#BaseActivity#0" />
+            <element signature="method#onPause#0;class#BaseActivity#0" />
+            <element signature="method#onResume#0;class#BaseActivity#0" />
+            <element signature="method#onLowMemory#0;class#BaseActivity#0" />
+            <element signature="method#onSaveInstanceState#0;class#BaseActivity#0" />
+            <element signature="class#SensorBroadcastReceiver#0;class#BaseActivity#0" />
+            <element signature="method#round#0;class#BaseActivity#0" />
+          </folding>
         </state>
       </provider>
     </entry>
