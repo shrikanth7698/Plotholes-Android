@@ -1,5 +1,6 @@
 package me.shrikanthravi.plotholes;
 
+import android.animation.LayoutTransition;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,12 +13,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -38,6 +41,7 @@ import me.shrikanthravi.plotholes.adapters.AutofillAdapter;
 import me.shrikanthravi.plotholes.api.models.general.AutofillRes;
 import me.shrikanthravi.plotholes.api.services.ApiClient;
 import me.shrikanthravi.plotholes.api.services.ApiInterface;
+import me.shrikanthravi.plotholes.api.services.AzureDB;
 import me.shrikanthravi.plotholes.extras.TinyDB;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,8 +54,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
     @BindView(R.id.where)
     EditText whereto;
 
-    @BindView(R.id.scrollView)
-    ScrollView scrollView;
 
     @BindView(R.id.calibrateBTN)
     Button calibrateBTN;
@@ -67,6 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
     SensorBroadcastReceiver sensorBroadcastReceiver;
     private TinyDB db;
     private ApiInterface api;
+    //private ApiInterface api1;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager manager;
     private ArrayList<String> placename = new ArrayList<>();
@@ -85,8 +88,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);
 
+        /*ViewGroup layout = (ViewGroup) findViewById(R.id.topLL);
+        LayoutTransition layoutTransition = layout.getLayoutTransition();
+        layoutTransition.enableTransitionType(LayoutTransition.CHANGING);*/
+
         db = new TinyDB(getApplicationContext());
         api = ApiClient.getClient().create(ApiInterface.class);
+        //api1 = AzureDB.getClient().create(ApiInterface.class);
         ButterKnife.bind(this);
         sensorBroadcastReceiver = new SensorBroadcastReceiver();
         final IntentFilter intentFilter = new IntentFilter("SensorBroadcastReceiver");
@@ -124,7 +132,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                     placeaddress.clear();
                     latitude.clear();
                     longitude.clear();
-                    scrollView.setVisibility(View.VISIBLE);
+                    //autofill_recycler.setVisibility(View.VISIBLE);
                     api.autfillPlaces(db.getString("access_token"), whereto.getText().toString()).enqueue(new Callback<AutofillRes>() {
                         @Override
                         public void onResponse(Call<AutofillRes> call, Response<AutofillRes> response) {
@@ -138,10 +146,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                                     }
                                     if (adapter == null) {
                                         adapter = new AutofillAdapter(BaseActivity.this, placename, placeaddress, BaseActivity.this);
-                                        autofill_recycler.setLayoutManager(new LinearLayoutManager(BaseActivity.this, LinearLayoutManager.VERTICAL, true));
+                                        autofill_recycler.setLayoutManager(new LinearLayoutManager(BaseActivity.this, LinearLayoutManager.VERTICAL, false));
                                         autofill_recycler.setAdapter(adapter);
                                     } else {
                                         adapter.notifyDataSetChanged();
+                                        autofill_recycler.scrollToPosition(0);
+                                        autofill_recycler.setVisibility(View.VISIBLE);
                                     }
                                 }
                             } else {
@@ -154,8 +164,16 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                             Toast.makeText(BaseActivity.this, t.toString(), Toast.LENGTH_LONG).show();
                         }
                     });
-                } else {
-                    scrollView.setVisibility(View.GONE);
+                }
+                if (s.toString().trim().length()==0){
+                    placename.clear();
+                    placeaddress.clear();
+                    latitude.clear();
+                    longitude.clear();
+                    if(adapter!=null) {
+                        adapter.notifyDataSetChanged();
+                    }
+                    autofill_recycler.setVisibility(View.GONE);
                 }
             }
         });
@@ -254,7 +272,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-        scrollView.setVisibility(View.GONE);
+        autofill_recycler.setVisibility(View.GONE);
         onAutofillRowSelected(latitude.get(position), longitude.get(position));
     }
 }
