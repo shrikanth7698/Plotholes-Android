@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,10 +20,6 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.mapbox.mapboxsdk.annotations.PolylineOptions;
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
-import com.mapbox.mapboxsdk.geometry.LatLng;
-import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -36,6 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.shrikanthravi.plotholes.adapters.AutofillAdapter;
 import me.shrikanthravi.plotholes.api.models.general.AutofillRes;
+import me.shrikanthravi.plotholes.api.models.general.RoutingRes;
 import me.shrikanthravi.plotholes.api.services.ApiClient;
 import me.shrikanthravi.plotholes.api.services.ApiInterface;
 import me.shrikanthravi.plotholes.extras.TinyDB;
@@ -144,7 +140,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                                         adapter.notifyDataSetChanged();
                                     }
                                 }
-                            } else {
+                            }
+                            else {
                                 Toast.makeText(BaseActivity.this, response.toString(), Toast.LENGTH_LONG).show();
                             }
                         }

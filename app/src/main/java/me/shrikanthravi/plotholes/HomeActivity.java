@@ -8,7 +8,9 @@ import android.graphics.Color;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.google.gson.JsonElement;
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineListener;
 import com.mapbox.android.core.location.LocationEnginePriority;
@@ -24,9 +26,13 @@ import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerPlugin;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.shrikanthravi.plotholes.api.models.general.RoutingRes;
 import me.shrikanthravi.plotholes.api.services.AzureDB;
 import me.shrikanthravi.plotholes.api.services.ApiInterface;
+import me.shrikanthravi.plotholes.api.services.RoutingClient;
+import me.shrikanthravi.plotholes.api.services.RoutingInteface;
 import me.shrikanthravi.plotholes.data.models.PotholeLocation;
+import me.shrikanthravi.plotholes.extras.Config;
 import me.shrikanthravi.plotholes.extras.TinyDB;
 import me.shrikanthravi.plotholes.services.SensorService;
 import retrofit2.Call;
@@ -34,6 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity implements LocationEngineListener {
+    RoutingInteface routeapi;
     ApiInterface api;
     private LocationLayerPlugin locationLayerPlugin;
     private LocationEngine locationEngine;
@@ -44,6 +51,7 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
 
     @Override
     public void onAppMapReady(final MapboxMap mapboxMap) {
+        routeapi = RoutingClient.getClient().create(RoutingInteface.class);
         this.mapboxMap = mapboxMap;
         locationEngine = new LocationEngineProvider(this).obtainBestLocationEngineAvailable();
         locationEngine.setPriority(LocationEnginePriority.HIGH_ACCURACY);
@@ -66,10 +74,26 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
 
     @Override
     public void onAutofillRowSelected(double latitude, double longitude) {
-        listOfLatlang.add(new LatLng(latitude, longitude));
-        mapboxMap.addPolyline(new PolylineOptions().addAll(listOfLatlang).color(Color.parseColor("#000000")).width(4));
-        LatLngBounds latLngBounds = new LatLngBounds.Builder().includes(listOfLatlang).build();
-        mapboxMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 70));
+        routeapi.getRouteWaypoints(Config.rest_api_key, tinyDB.getString("lat") + "," + tinyDB.getString("lng"), latitude + "," + longitude, "true", "1").enqueue(new Callback<JsonElement>() {
+            @Override
+            public void onResponse(Call<JsonElement> call, Response<JsonElement> response) {
+                if (response.isSuccessful()) {
+                    for (int i = 0; i < response.body().getAsJsonObject().get("results").getAsJsonObject().get("trips").getAsJsonArray().get(0).getAsJsonObject().get("advices").getAsJsonArray().size(); i++) {
+                        listOfLatlang.add(new LatLng(response.body().getAsJsonObject().get("results").getAsJsonObject().get("trips").getAsJsonArray().get(0).getAsJsonObject().get("advices").getAsJsonArray().get(i).getAsJsonObject().get("pt").getAsJsonObject().get("lat").getAsDouble(), response.body().getAsJsonObject().get("results").getAsJsonObject().get("trips").getAsJsonArray().get(0).getAsJsonObject().get("advices").getAsJsonArray().get(i).getAsJsonObject().get("pt").getAsJsonObject().get("lng").getAsDouble()));
+                    }
+                    mapboxMap.addPolyline(new PolylineOptions().addAll(listOfLatlang).color(Color.parseColor("#000000")).width(4));
+                    LatLngBounds latLngBounds = new LatLngBounds.Builder().includes(listOfLatlang).build();
+                    mapboxMap.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 70));
+                } else {
+                    Toast.makeText(HomeActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonElement> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
