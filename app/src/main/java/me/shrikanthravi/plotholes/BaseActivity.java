@@ -28,6 +28,8 @@ import com.mapbox.mapboxsdk.geometry.LatLngBounds;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -90,6 +92,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
         sensorBroadcastReceiver = new SensorBroadcastReceiver();
         final IntentFilter intentFilter = new IntentFilter("SensorBroadcastReceiver");
         LocalBroadcastManager.getInstance(this).registerReceiver(sensorBroadcastReceiver, intentFilter);
+        initMongoDb();
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(new OnMapReadyCallback() {
@@ -168,6 +171,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Autofill
                 calib_Z = z;
             }
         });
+    }
+
+    private void initMongoDb() {
+
+        //MongoClient mongoClient = new MongoClient("mongodb://plothole:bvj17qKni6FWqLXtJzfKftwpLyQJ0Wf1pjlz66LPlzDAHgXerdvEsUHo3rCMiBFRJDCV56JYCjOLdHrxb6Dfgw==@plothole.documents.azure.com:10255/?ssl=true&replicaSet=globaldb");
+        //DB database = mongoClient.getDB("plothole_locs");
+
     }
 
     @Override

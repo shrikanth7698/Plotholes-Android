@@ -6,32 +6,37 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.mapbox.android.core.location.LocationEngine;
 import com.mapbox.android.core.location.LocationEngineListener;
 import com.mapbox.android.core.location.LocationEnginePriority;
 import com.mapbox.android.core.location.LocationEngineProvider;
-import com.mapbox.mapboxsdk.MapmyIndia;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerOptions;
 import com.mapbox.mapboxsdk.plugins.locationlayer.LocationLayerPlugin;
-import com.mmi.services.account.MapmyIndiaAccountManager;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import java.util.ArrayList;
+import java.util.List;
+
+import me.shrikanthravi.plotholes.api.services.AzureDB;
+import me.shrikanthravi.plotholes.api.services.ApiInterface;
+import me.shrikanthravi.plotholes.data.models.PotholeLocation;
+import me.shrikanthravi.plotholes.extras.TinyDB;
 import me.shrikanthravi.plotholes.services.SensorService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity implements LocationEngineListener {
+    ApiInterface api;
     private LocationLayerPlugin locationLayerPlugin;
     private LocationEngine locationEngine;
     MapboxMap mapboxMap;
+    TinyDB tinyDB;
+    List<PotholeLocation> potholeLocations = new ArrayList<>();
 
     @Override
     public void onAppMapReady(final MapboxMap mapboxMap) {
@@ -69,6 +74,8 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
 
     @Override
     public void onLocationChanged(Location location) {
+        tinyDB.putString("lat",String.valueOf(location.getLatitude()));
+        tinyDB.putString("lng",String.valueOf(location.getLongitude()));
         mapboxMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 15));
         locationEngine.removeLocationEngineListener(this);
     }
@@ -86,6 +93,22 @@ public class HomeActivity extends BaseActivity implements LocationEngineListener
         if (locationLayerPlugin != null) {
             locationLayerPlugin.onStart();
         }
+        tinyDB = new TinyDB(getApplicationContext());
+        api = AzureDB.getClient().create(ApiInterface.class);
+        api.getPotholes().enqueue(new Callback<List<PotholeLocation>>() {
+            @Override
+            public void onResponse(Call<List<PotholeLocation>> call, Response<List<PotholeLocation>> response) {
+                potholeLocations.clear();
+                potholeLocations.addAll(response.body());
+                System.out.println("potholes list size -> "+potholeLocations.size());
+            }
+
+            @Override
+            public void onFailure(Call<List<PotholeLocation>> call, Throwable t) {
+
+            }
+        });
+
     }
 
     @Override

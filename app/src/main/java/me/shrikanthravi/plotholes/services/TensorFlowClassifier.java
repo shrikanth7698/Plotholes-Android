@@ -11,12 +11,12 @@ public class TensorFlowClassifier {
     }
 
     private TensorFlowInferenceInterface inferenceInterface;
-    private static final String MODEL_FILE = "file:///android_asset/diff_per_sample.pb";
+    private static final String MODEL_FILE = "file:///android_asset/diff_noise_W15_N02.pb";
 //    private static final String MODEL_FILE = "file:///android_asset/frozen_har.pb";
     private static final String INPUT_NODE = "input";
     private static final String[] OUTPUT_NODES = {"y_"};
     private static final String OUTPUT_NODE = "y_";
-    private static final long[] INPUT_SIZE = {1, 6, 3};
+    private static final long[] INPUT_SIZE = {1, 15, 3};
     private static final int OUTPUT_SIZE = 2;
 
     public TensorFlowClassifier(final Context context) {

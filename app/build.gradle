@@ -42,6 +42,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.google.firebase:firebase-core:16.0.5'
+    implementation 'com.google.firebase:firebase-database:16.0.5'
+    implementation 'org.mongodb:mongodb-driver:3.4.1'
     implementation project (':mapmyindia')
     implementation('com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.5.2') {
         exclude group: 'com.mapbox.mapboxsdk', module: 'mapbox-android-sdk'
@@ -50,4 +53,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 }
+apply plugin: 'com.google.gms.google-services'
